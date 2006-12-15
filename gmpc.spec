@@ -2,12 +2,13 @@
 Summary:	Gnome Music Player Client
 Name:		gmpc
 Version:	0.13.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Sound
 # http://sarine.nl/gmpc-downloads
 Source0:	%{name}-%{version}.tar.gz
 # Source0-md5:	dbbb1880feb8b9c2493ece670520299b
+Patch0:		%{name}-plugins_path.patch
 URL:		http://sarine.nl/gmpc
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -29,12 +30,14 @@ a small osd window to adding an extra view in the playlist browser.
 Summary:	Header files for GMPC plugin developement
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+Requires:	libmpd-devel
 
 %description devel
 Header files for GMPC plugin developement.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__intltoolize}
@@ -50,6 +53,8 @@ Header files for GMPC plugin developement.
 %install
 rm -rf $RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_libdir}/%{name}
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
@@ -64,11 +69,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_desktopdir}/*
 %{_datadir}/%{name}
+%{_libdir}/%{name}
 %{_pixmapsdir}/*
 
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/*
 %{_pkgconfigdir}/*
-#%doc extras/*.gz
-#%{_datadir}/%{name}-ext
