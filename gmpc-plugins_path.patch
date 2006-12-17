@@ -1,0 +1,30 @@
+diff -dur -x '*~' gmpc-0.13.0.orig/src/Makefile.am gmpc-0.13.0/src/Makefile.am
+--- gmpc-0.13.0.orig/src/Makefile.am	2006-01-18 12:16:30.000000000 +0100
++++ gmpc-0.13.0/src/Makefile.am	2006-12-15 18:03:59.000000000 +0100
+@@ -24,9 +24,12 @@
+ 	cover-art-manager.c\
+ 	TreeSearchWidget.c
+ 
++pkglibdir_LIBS = 
++
+ INCLUDES= @EXTRA_CFLAGS@ -Wall\
+ 	-DPIXMAP_PATH=\""$(pkgdatadir)"\" \
+ 	-DGLADE_PATH=\""$(pkgdatadir)"\" \
++	-DPLUGINS_PATH=\""$(pkglibdir)"\" \
+ 	-DVERSION=\"@VERSION@\"
+ 
+ LIBS = \
+diff -dur -x '*~' gmpc-0.13.0.orig/src/main.c gmpc-0.13.0/src/main.c
+--- gmpc-0.13.0.orig/src/main.c	2006-02-14 19:04:43.000000000 +0100
++++ gmpc-0.13.0/src/main.c	2006-12-15 17:59:04.000000000 +0100
+@@ -241,9 +241,7 @@
+ 	
+ 
+ 
+-	url = g_strdup_printf("%s/%s",GLADE_PATH, "plugins");
+-	plugin_load_dir(url);
+-	g_free(url);
++	plugin_load_dir(PLUGINS_PATH);
+ 	/* plugins */
+ 	url = g_strdup_printf("%s/.gmpc/plugins/",g_get_home_dir());
+ 	if(g_file_test(url, G_FILE_TEST_IS_DIR))
