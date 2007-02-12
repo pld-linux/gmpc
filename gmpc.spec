@@ -1,5 +1,5 @@
 Summary:	Gnome Music Player Client
-Summary(pl.UTF-8):   Odtwarzacz Gnome Music Player Client
+Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
 Version:	0.13.0
 Release:	2
@@ -36,7 +36,7 @@ na ekranie do dodawania dodatkowego widoku do przeglądarki playlist.
 
 %package devel
 Summary:	Header files for GMPC plugin developement
-Summary(pl.UTF-8):   Pliki nagłówkowe do tworzenia wtyczek dla GMPC
+Summary(pl.UTF-8):	Pliki nagłówkowe do tworzenia wtyczek dla GMPC
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	libmpd-devel
