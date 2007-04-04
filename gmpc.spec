@@ -2,21 +2,23 @@ Summary:	Gnome Music Player Client
 Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
 Version:	0.14.0
-Release:	1
+Release:	2
 License:	GPL
 Group:		X11/Applications/Sound
 # http://sarine.nl/gmpc-downloads
 Source0:	http://download.sarine.nl/gmpc-%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	0c95f6a0a44ea4606eafdc7bb50b3bdb
 Patch0:		%{name}-plugins_path.patch
+Patch1:		%{name}-desktop.patch
 URL:		http://gmpc.sarine.nl/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	curl-devel
-BuildRequires:	gtk+2-devel >= 2:2.4
+BuildRequires:	glib2-devel >= 1:2.10.0
+BuildRequires:	gtk+2-devel >= 2:2.8.0
 BuildRequires:	intltool
 BuildRequires:	libglade2-devel
-BuildRequires:	libmpd-devel >= 0.13
+BuildRequires:	libmpd-devel >= 0.13.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -41,7 +43,7 @@ Summary:	Header files for GMPC plugin developement
 Summary(pl.UTF-8):	Pliki nagłówkowe do tworzenia wtyczek dla GMPC
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libmpd-devel
+Requires:	libmpd-devel >= 0.13.0
 
 %description devel
 Header files for GMPC plugin developement.
@@ -52,6 +54,7 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
