@@ -1,0 +1,13 @@
+diff -urN gmpc-0.14.0/data/gmpc.desktop.in gmpc-0.14.0.new/data/gmpc.desktop.in
+--- gmpc-0.14.0/data/gmpc.desktop.in	2007-02-18 01:10:24.000000000 +0100
++++ gmpc-0.14.0.new/data/gmpc.desktop.in	2007-04-04 22:02:53.000000000 +0200
+@@ -4,7 +4,7 @@
+ Exec=gmpc
+ Terminal=false
+ Type=Application
+-Icon=gmpc.png
+-Categories=GNOME;Application;AudioVideo;
++Icon=gmpc
++Categories=GTK;GNOME;Audio;Player;
+ StartupNotify=true
+ Encoding=UTF-8
