@@ -1,6 +1,23 @@
---- gmpc-0.14.0/src/Makefile.am.wig	2007-02-19 21:55:18.000000000 +0100
-+++ gmpc-0.14.0/src/Makefile.am	2007-02-19 21:56:10.000000000 +0100
-@@ -52,6 +52,7 @@
+diff -ur gmpc-0.15.0-o/src/main.c gmpc-0.15.0/src/main.c
+--- gmpc-0.15.0-o/src/main.c	2007-05-19 14:40:09.000000000 -0600
++++ gmpc-0.15.0/src/main.c	2007-05-19 20:09:27.000000000 -0600
+@@ -528,7 +528,7 @@
+ 
+ #else
+ 	/** Load the global installed plugins */
+-	url = g_strdup_printf("%s%c%s",GLADE_PATH,G_DIR_SEPARATOR, "plugins");
++	url = g_strdup(PLUGINS_PATH);
+ #endif
+ 	plugin_load_dir(url);
+ 	q_free(url);
+Only in gmpc-0.15.0/src: main.c~
+Only in gmpc-0.15.0/src: main.c.orig
+Only in gmpc-0.15.0/src: main.c.rej
+Only in gmpc-0.15.0/src: main.c.rej~
+diff -ur gmpc-0.15.0-o/src/Makefile.am gmpc-0.15.0/src/Makefile.am
+--- gmpc-0.15.0-o/src/Makefile.am	2007-05-19 14:40:13.000000000 -0600
++++ gmpc-0.15.0/src/Makefile.am	2007-05-19 20:06:31.000000000 -0600
+@@ -61,6 +61,7 @@
  INCLUDES= @EXTRA_CFLAGS@ -Wall\
  	-DPIXMAP_PATH=\""$(pkgdatadir)"\" \
  	-DGLADE_PATH=\""$(pkgdatadir)"\" \
@@ -8,16 +25,4 @@
  	-DVERSION=\"@VERSION@\"
  
  LIBS= \
---- gmpc-0.14.0/src/main.c.wig	2007-02-19 21:53:40.000000000 +0100
-+++ gmpc-0.14.0/src/main.c	2007-02-19 21:55:03.000000000 +0100
-@@ -515,9 +515,7 @@
-      *  load dynamic plugins 
-      */
-     /** Load the global installed plugins */
--    url = g_strdup_printf("%s/%s",GLADE_PATH, "plugins");
--    plugin_load_dir(url);
--    q_free(url);
-+    plugin_load_dir(PLUGINS_PATH);
-     /* user space dynamic plugins */
-     url = g_strdup_printf("%s/.gmpc/plugins/",g_get_home_dir());
-     /**
+Only in gmpc-0.15.0/src: Makefile.am.orig
