@@ -1,13 +1,13 @@
 Summary:	Gnome Music Player Client
 Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
-Version:	0.14.0
-Release:	2
+Version:	0.15.0
+Release:	1
 License:	GPL
 Group:		X11/Applications/Sound
 # http://sarine.nl/gmpc-downloads
 Source0:	http://download.sarine.nl/gmpc-%{version}/%{name}-%{version}.tar.gz
-# Source0-md5:	0c95f6a0a44ea4606eafdc7bb50b3bdb
+# Source0-md5:	00fc95f8f67a2d9c7b7d3bf58299148c
 Patch0:		%{name}-plugins_path.patch
 Patch1:		%{name}-desktop.patch
 URL:		http://gmpc.sarine.nl/
@@ -18,7 +18,7 @@ BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gtk+2-devel >= 2:2.8.0
 BuildRequires:	intltool
 BuildRequires:	libglade2-devel
-BuildRequires:	libmpd-devel >= 0.13.0
+BuildRequires:	libmpd-devel >= 0.14.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
