@@ -15,6 +15,7 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	glib2-devel >= 1:2.10.0
+BuildRequires:	gob2
 BuildRequires:	gtk+2-devel >= 2:2.8.0
 BuildRequires:	intltool
 BuildRequires:	libglade2-devel
