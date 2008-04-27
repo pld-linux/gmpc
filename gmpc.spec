@@ -10,6 +10,7 @@ Source0:	http://download.sarine.nl/gmpc-0.15.5/%{name}-%{version}.tar.gz
 # Source0-md5:	8d04d8f1bad663d037b107d1845d62e6
 Patch0:		%{name}-plugins_path.patch
 Patch1:		%{name}-desktop.patch
+Patch2:		%{name}-locale.patch
 URL:		http://gmpc.sarine.nl/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -57,8 +58,10 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
+mv po/nb_NO.po po/nb.po
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
