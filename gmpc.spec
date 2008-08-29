@@ -25,7 +25,7 @@ BuildRequires:	libmpd-devel >= 0.15.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9
 BuildRequires:	xorg-lib-libSM-devel
-Requires:	libmpd >= 0.14.0
+%requires_eq	libmpd
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
