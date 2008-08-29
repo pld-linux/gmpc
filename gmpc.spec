@@ -15,6 +15,7 @@ URL:		http://gmpc.sarine.nl/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	curl-devel
+BuildRequires:	gettext-devel
 BuildRequires:	glib2-devel >= 1:2.10.0
 BuildRequires:	gob2
 BuildRequires:	gtk+2-devel >= 2:2.8.0
@@ -23,6 +24,7 @@ BuildRequires:	libglade2-devel
 BuildRequires:	libmpd-devel >= 0.15.0
 BuildRequires:	libtool
 BuildRequires:	pkgconfig >= 0.9
+BuildRequires:	xorg-lib-libSM-devel
 Requires:	libmpd >= 0.14.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -56,12 +58,12 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 
 %prep
 %setup -q
+mv po/nb_NO.po po/nb.po
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
 
 %build
-mv po/nb_NO.po po/nb.po
 %{__intltoolize}
 %{__libtoolize}
 %{__aclocal}
