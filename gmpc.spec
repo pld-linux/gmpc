@@ -1,13 +1,12 @@
 Summary:	Gnome Music Player Client
 Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
-Version:	0.15.5.0
+Version:	0.16.95
 Release:	3
 License:	GPL
 Group:		X11/Applications/Sound
-# http://download.sarine.nl/gmpc-0.15.5/
-Source0:	http://download.sarine.nl/gmpc-0.15.5/%{name}-%{version}.tar.gz
-# Source0-md5:	8d04d8f1bad663d037b107d1845d62e6
+Source0:	http://download.sarine.nl/download/Programs/gmpc/0.17.0-beta1/%{name}-%{version}.tar.gz
+# Source0-md5:	14468357aa6b305cbf5f42b04a4d60bf
 Patch0:		%{name}-plugins_path.patch
 Patch1:		%{name}-desktop.patch
 Patch2:		%{name}-locale.patch
@@ -58,10 +57,10 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 
 %prep
 %setup -q
-mv po/nb_NO.po po/nb.po
-%patch0 -p1
+#mv po/nb_NO.po po/nb.po
+#%patch0 -p1
 %patch1 -p1
-%patch2 -p1
+#%patch2 -p1
 
 %build
 %{__intltoolize}
@@ -95,7 +94,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/*
 %{_datadir}/%{name}
 %{_libdir}/%{name}
-%{_pixmapsdir}/*
+#%{_pixmapsdir}/*
+%{_iconsdir}/hicolor/16x16/apps/gmpc.png
+%{_iconsdir}/hicolor/22x22/apps/gmpc.png
+%{_iconsdir}/hicolor/32x32/apps/gmpc.png
+%{_iconsdir}/hicolor/48x48/apps/gmpc.png
+%{_iconsdir}/hicolor/scalable/apps/gmpc.svg
+%{_mandir}/man1/gmpc-remote.1*
+%{_mandir}/man1/gmpc.1*
+
 
 %files devel
 %defattr(644,root,root,755)
