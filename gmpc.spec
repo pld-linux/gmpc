@@ -77,7 +77,7 @@ RC=no \
 %install
 rm -rf $RPM_BUILD_ROOT
 
-install -d $RPM_BUILD_ROOT{%{_libdir}/%{name},%{_datadir}/%{name}/plugins}
+install -d $RPM_BUILD_ROOT{%{_libdir}/%{name}/plugins,%{_datadir}/%{name}/plugins}
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
