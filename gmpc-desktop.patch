@@ -8,6 +8,6 @@ diff -urN gmpc-0.14.0/data/gmpc.desktop.in gmpc-0.14.0.new/data/gmpc.desktop.in
 -Icon=gmpc.png
 -Categories=GNOME;Application;AudioVideo;
 +Icon=gmpc
-+Categories=GTK;GNOME;Audio;Player;
++Categories=GTK;GNOME;AudioVideo;Audio;Player;
  StartupNotify=true
  Encoding=UTF-8
