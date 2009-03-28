@@ -25,6 +25,8 @@ BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libSM-devel
 %requires_eq	libmpd
 Requires(post,postun):	gtk+2
+Obsoletes:	gmpc-plugin-serverstats
+Obsoletes:	gmpc-plugin-favorites
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
