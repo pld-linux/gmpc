@@ -1,13 +1,15 @@
-diff -urN gmpc-0.14.0/data/gmpc.desktop.in gmpc-0.14.0.new/data/gmpc.desktop.in
---- gmpc-0.14.0/data/gmpc.desktop.in	2007-02-18 01:10:24.000000000 +0100
-+++ gmpc-0.14.0.new/data/gmpc.desktop.in	2007-04-04 22:02:53.000000000 +0200
-@@ -4,7 +4,7 @@
- Exec=gmpc
+diff -ur gmpc-0.18.96-o/data/gmpc.desktop.in gmpc-0.18.96/data/gmpc.desktop.in
+--- gmpc-0.18.96-o/data/gmpc.desktop.in	2009-08-08 04:08:53.000000000 -0600
++++ gmpc-0.18.96/data/gmpc.desktop.in	2009-08-08 16:45:46.286212563 -0600
+@@ -5,5 +5,5 @@
  Terminal=false
  Type=Application
--Icon=gmpc.png
--Categories=GNOME;Application;AudioVideo;
-+Icon=gmpc
+ Icon=gmpc
+-Categories=GNOME;AudioVideo;
 +Categories=GTK;GNOME;AudioVideo;Audio;Player;
  StartupNotify=true
- Encoding=UTF-8
+Only in gmpc-0.18.96/data: gmpc.desktop.in~
+Only in gmpc-0.18.96/data: gmpc.desktop.in.orig
+Only in gmpc-0.18.96/data: gmpc.desktop.in.rej
+Only in gmpc-0.18.96/data: gmpc.desktop.in.rej~
+Only in gmpc-0.18.96: gmpc-0.14.0.new

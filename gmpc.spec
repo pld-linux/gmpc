@@ -1,14 +1,13 @@
 Summary:	Gnome Music Player Client
 Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
-Version:	0.18.0
-Release:	3
+Version:	0.18.96
+Release:	0
 License:	GPL v2+
 Group:		X11/Applications/Sound
 Source0:	http://dl.sourceforge.net/musicpd/%{name}-%{version}.tar.gz
-# Source0-md5:	4a0d3a4bd03686f4e51b23110186cba0
+# Source0-md5:	f0e19c4c79ec9edf35e316df7f5a368a
 Patch0:		%{name}-desktop.patch
-Patch1:		%{name}-xspf.patch
 URL:		http://gmpc.wikia.com
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
@@ -19,7 +18,7 @@ BuildRequires:	gob2
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool
 BuildRequires:	libglade2-devel
-BuildRequires:	libmpd-devel >= 0.18.0
+BuildRequires:	libmpd-devel >= 0.18.96
 BuildRequires:	libtool
 BuildRequires:	libxspf-devel
 BuildRequires:	pkgconfig >= 0.9
@@ -60,9 +59,8 @@ Header files for GMPC plugin developement.
 Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__intltoolize}
@@ -111,6 +109,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/22x22/apps/gmpc.png
 %{_iconsdir}/hicolor/32x32/apps/gmpc.png
 %{_iconsdir}/hicolor/48x48/apps/gmpc.png
+%{_iconsdir}/hicolor/64x64/apps/gmpc.png
+%{_iconsdir}/hicolor/72x72/apps/gmpc.png
+%{_iconsdir}/hicolor/96x96/apps/gmpc.png
+%{_iconsdir}/hicolor/128x128/apps/gmpc.png
 %{_iconsdir}/hicolor/scalable/apps/gmpc.svg
 %{_mandir}/man1/gmpc-remote.1*
 %{_mandir}/man1/gmpc.1*
