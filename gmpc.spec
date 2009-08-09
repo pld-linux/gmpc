@@ -19,6 +19,8 @@ BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool
 BuildRequires:	libglade2-devel
 BuildRequires:	libmpd-devel >= 0.18.96
+BuildRequires:	libsexy-devel
+BuildRequires:	libsoup-devel
 BuildRequires:	libtool
 BuildRequires:	libxspf-devel
 BuildRequires:	pkgconfig >= 0.9
@@ -71,7 +73,8 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 %{__automake}
 
 RC=no \
-%configure
+%configure \
+	--enable-system-libsexy
 %{__make}
 
 %install
