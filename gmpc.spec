@@ -13,7 +13,7 @@ BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	gettext-devel
-BuildRequires:	glib2-devel >= 1:2.10.0
+BuildRequires:	glib2-devel >= 1:2.16.0
 BuildRequires:	gob2
 BuildRequires:	gtk+2-devel >= 2:2.12.0
 BuildRequires:	intltool
@@ -25,6 +25,7 @@ BuildRequires:	libtool
 BuildRequires:	libxspf-devel
 BuildRequires:	pkgconfig >= 0.9
 BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	sqlite3-devel
 BuildRequires:	xorg-lib-libSM-devel
 %requires_eq	libmpd
 Requires(post,postun):	gtk+2
@@ -52,7 +53,7 @@ Summary:	Header files for GMPC plugin developement
 Summary(pl.UTF-8):	Pliki nagłówkowe do tworzenia wtyczek dla GMPC
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	libmpd-devel >= 0.18.0
+Requires:	libmpd-devel >= 0.19.0
 
 %description devel
 Header files for GMPC plugin developement.
