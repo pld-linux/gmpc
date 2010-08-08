@@ -26,6 +26,7 @@ BuildRequires:	libxspf-devel
 BuildRequires:	pkgconfig >= 0.9
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	sqlite3-devel
+BuildRequires:	vala >= 0.7.10
 BuildRequires:	xorg-lib-libSM-devel
 %requires_eq	libmpd
 Requires(post,postun):	gtk+2
@@ -118,6 +119,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/96x96/apps/gmpc.png
 %{_iconsdir}/hicolor/128x128/apps/gmpc.png
 %{_iconsdir}/hicolor/scalable/apps/gmpc.svg
+%{_iconsdir}/Humanity/16x16/apps/gmpc.png
+%{_iconsdir}/Humanity/22x22/apps/gmpc.png
+%{_iconsdir}/Humanity/24x24/apps/gmpc.png
+%{_iconsdir}/Humanity/32x32/apps/gmpc.png
+%{_iconsdir}/Humanity/48x48/apps/gmpc.png
+%{_iconsdir}/Humanity/64x64/apps/gmpc.png
+%{_iconsdir}/Humanity/72x72/apps/gmpc.png
+%{_iconsdir}/Humanity/96x96/apps/gmpc.png
+%{_iconsdir}/Humanity/128x128/apps/gmpc.png
+%{_iconsdir}/Humanity/scalable/apps/gmpc.svg
 %{_mandir}/man1/gmpc-remote.1*
 %{_mandir}/man1/gmpc.1*
 
