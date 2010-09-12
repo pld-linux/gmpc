@@ -1,8 +1,11 @@
+# TODO:
+# package Humanity icons
+#
 Summary:	Gnome Music Player Client
 Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
 Version:	0.20.0
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications/Sound
 Source0:	http://downloads.sourceforge.net/musicpd/%{name}-%{version}.tar.gz
@@ -119,16 +122,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/96x96/apps/gmpc.png
 %{_iconsdir}/hicolor/128x128/apps/gmpc.png
 %{_iconsdir}/hicolor/scalable/apps/gmpc.svg
-%{_iconsdir}/Humanity/16x16/apps/gmpc.png
-%{_iconsdir}/Humanity/22x22/apps/gmpc.png
-%{_iconsdir}/Humanity/24x24/apps/gmpc.png
-%{_iconsdir}/Humanity/32x32/apps/gmpc.png
-%{_iconsdir}/Humanity/48x48/apps/gmpc.png
-%{_iconsdir}/Humanity/64x64/apps/gmpc.png
-%{_iconsdir}/Humanity/72x72/apps/gmpc.png
-%{_iconsdir}/Humanity/96x96/apps/gmpc.png
-%{_iconsdir}/Humanity/128x128/apps/gmpc.png
-%{_iconsdir}/Humanity/scalable/apps/gmpc.svg
+#%{_iconsdir}/Humanity/16x16/apps/gmpc.png
+#%{_iconsdir}/Humanity/22x22/apps/gmpc.png
+#%{_iconsdir}/Humanity/24x24/apps/gmpc.png
+#%{_iconsdir}/Humanity/32x32/apps/gmpc.png
+#%{_iconsdir}/Humanity/48x48/apps/gmpc.png
+#%{_iconsdir}/Humanity/64x64/apps/gmpc.png
+#%{_iconsdir}/Humanity/72x72/apps/gmpc.png
+#%{_iconsdir}/Humanity/96x96/apps/gmpc.png
+#%{_iconsdir}/Humanity/128x128/apps/gmpc.png
+#%{_iconsdir}/Humanity/scalable/apps/gmpc.svg
 %{_mandir}/man1/gmpc-remote.1*
 %{_mandir}/man1/gmpc.1*
 
