@@ -88,8 +88,7 @@ touch -r src/playlist3.c.foo src/playlist3.c
 
 RC=no \
 %configure \
-	--with-html-dir=%{_gtkdocdir} \
-	%{!?with_apidocs:--disable-gtk-doc} \
+	--enable-libxspf \
 	--enable-unique \
 
 #	--enable-appindicator \
