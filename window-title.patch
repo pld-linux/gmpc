@@ -1,0 +1,20 @@
+--- gmpc-0.20.0/src/./playlist3.c~	2010-03-22 05:18:43.000000000 +0200
++++ gmpc-0.20.0/src/./playlist3.c	2012-01-28 18:37:04.116982383 +0200
+@@ -813,7 +813,7 @@
+ 		if(gmpc_profiles_get_number_of_profiles(gmpc_profiles) >1){
+ 			gchar *id = gmpc_profiles_get_current(gmpc_profiles);
+ 			if(id) {
+-				string = g_strdup_printf("[%s] %s - %s %s",gmpc_profiles_get_name(gmpc_profiles, id), _("GMPC"), _("Connected to"), mpd_get_hostname(mi));
++				string = g_strdup_printf("%s - %s %s [%s]", _("GMPC"), _("Connected to"), mpd_get_hostname(mi), gmpc_profiles_get_name(gmpc_profiles, id));
+ 				g_free(id);
+ 			}
+ 		}
+@@ -827,7 +827,7 @@
+ 		if(gmpc_profiles_get_number_of_profiles(gmpc_profiles) >1){
+ 			gchar *id = gmpc_profiles_get_current(gmpc_profiles);
+ 			if(id) {
+-				string = g_strdup_printf("[%s] %s - %s",gmpc_profiles_get_name(gmpc_profiles, id), _("GMPC"), _("Disconnected"));
++				string = g_strdup_printf("%s - %s [%s]", _("GMPC"), _("Disconnected"), gmpc_profiles_get_name(gmpc_profiles, id));
+ 				g_free(id);
+ 			}
+ 		}

@@ -11,7 +11,8 @@ Group:		X11/Applications/Sound
 Source0:	http://downloads.sourceforge.net/musicpd/%{name}-%{version}.tar.gz
 # Source0-md5:	902fd69b0b6bb40abb647604080dd7ef
 Patch0:		%{name}-desktop.patch
-URL:		http://gmpc.wikia.com
+Patch1:		window-title.patch
+URL:		http://www.gmpclient.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	curl-devel
@@ -69,6 +70,7 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__intltoolize}
