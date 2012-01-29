@@ -38,11 +38,11 @@ BuildRequires:	zlib-devel
 Requires:	libmpd >= %{libmpd_ver}
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
-Obsoletes:	gmpc-plugin-favorites
-Obsoletes:	gmpc-plugin-serverstats
 Obsoletes:	gmpc-plugin-discogs
-Obsoletes:	gmpc-plugin-lastfm-provider
 Obsoletes:	gmpc-plugin-extraplaylist
+Obsoletes:	gmpc-plugin-favorites
+Obsoletes:	gmpc-plugin-lastfm-provider
+Obsoletes:	gmpc-plugin-serverstats
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -107,9 +107,10 @@ install -d $RPM_BUILD_ROOT{%{_libdir}/%{name}/plugins,%{_datadir}/%{name}/plugin
 
 # Ubuntu theme, not present in PLD
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/icons/Humanity
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/gmpc/icons/Humanity
 
 # drop javanese translation, need glibc support first
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/jv
+%{__rm} -r $RPM_BUILD_ROOT%{_datadir}/locale/jv
 
 %find_lang %{name} --with-gnome
 
