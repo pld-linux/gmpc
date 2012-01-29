@@ -3,7 +3,7 @@ Summary:	Gnome Music Player Client
 Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
 Version:	11.8.16
-Release:	1
+Release:	2
 License:	GPL v2+
 Group:		X11/Applications/Sound
 Source0:	http://download.sarine.nl/Programs/gmpc/%{version}/%{name}-%{version}.tar.gz
@@ -40,6 +40,9 @@ Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Obsoletes:	gmpc-plugin-favorites
 Obsoletes:	gmpc-plugin-serverstats
+Obsoletes:	gmpc-plugin-discogs
+Obsoletes:	gmpc-plugin-lastfm-provider
+Obsoletes:	gmpc-plugin-extraplaylist
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
