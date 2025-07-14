@@ -75,10 +75,10 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 # breaks compilation: http://carme.pld-linux.org/~glen/gmpc.log
 touch -r src/playlist3.c src/playlist3.c.foo
-%patch1 -p1
+%patch -P1 -p1
 touch -r src/playlist3.c.foo src/playlist3.c
 
 %build
