@@ -38,11 +38,11 @@ BuildRequires:	zlib-devel
 Requires:	libmpd >= %{libmpd_ver}
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
-Obsoletes:	gmpc-plugin-discogs
-Obsoletes:	gmpc-plugin-extraplaylist
-Obsoletes:	gmpc-plugin-favorites
-Obsoletes:	gmpc-plugin-lastfm-provider
-Obsoletes:	gmpc-plugin-serverstats
+Obsoletes:	gmpc-plugin-discogs < 0.21
+Obsoletes:	gmpc-plugin-extraplaylist < 0.21
+Obsoletes:	gmpc-plugin-favorites < 0.16
+Obsoletes:	gmpc-plugin-lastfm-provider < 0.21
+Obsoletes:	gmpc-plugin-serverstats < 0.16
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
