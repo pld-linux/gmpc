@@ -6,11 +6,11 @@ Version:	11.8.16
 Release:	4
 License:	GPL v2+
 Group:		X11/Applications/Sound
-Source0:	http://download.sarine.nl/Programs/gmpc/%{version}/%{name}-%{version}.tar.gz
+Source0:	https://download.sarine.nl/Programs/gmpc/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	223aeb000e41697d8fdf54ccedee89d5
 Patch0:		%{name}-desktop.patch
 Patch1:		window-title.patch
-URL:		http://www.gmpclient.org/
+URL:		https://www.gmpclient.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	curl-devel
@@ -20,22 +20,21 @@ BuildRequires:	gnome-doc-utils
 BuildRequires:	gob2 >= 2.0.17
 BuildRequires:	gtk+2-devel >= 2:2.18
 BuildRequires:	intltool
-BuildRequires:	libmpd-devel >= 0.20.95
+BuildRequires:	libmpd-devel >= %{libmpd_ver}
 BuildRequires:	libsexy-devel
 BuildRequires:	libsoup-devel
 BuildRequires:	libtool
 BuildRequires:	libunique-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	libxspf-devel
-BuildRequires:	pkgconfig >= 0.9
+BuildRequires:	pkgconfig >= 1:0.9
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	sqlite3-devel
+BuildRequires:	sqlite3-devel >= 3
 BuildRequires:	vala >= 0.11.0
 BuildRequires:	xorg-lib-libSM-devel
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	zlib-devel
 %requires_ge_to	libmpd libmpd-devel
-Requires:	libmpd >= %{libmpd_ver}
 Requires(post,postun):	gtk-update-icon-cache
 Requires(post,postun):	hicolor-icon-theme
 Obsoletes:	gmpc-plugin-discogs < 0.21
