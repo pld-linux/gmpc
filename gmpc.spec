@@ -1,31 +1,35 @@
+#
+# Conditional build:
+%bcond_with	appindicator	# app indicators (pre-ayatana)
+
 %define		libmpd_ver	0.20.95
 Summary:	Gnome Music Player Client
 Summary(pl.UTF-8):	Odtwarzacz Gnome Music Player Client
 Name:		gmpc
 Version:	11.8.16
-Release:	4
+Release:	5
 License:	GPL v2+
 Group:		X11/Applications/Sound
 Source0:	https://download.sarine.nl/Programs/gmpc/%{version}/%{name}-%{version}.tar.gz
 # Source0-md5:	223aeb000e41697d8fdf54ccedee89d5
 Patch0:		%{name}-desktop.patch
 Patch1:		window-title.patch
+Patch2:		%{name}-types.patch
 URL:		https://www.gmpclient.org/
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
-BuildRequires:	curl-devel
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.16.0
-BuildRequires:	gnome-doc-utils
+BuildRequires:	gnome-doc-utils >= 0.18.0
 BuildRequires:	gob2 >= 2.0.17
 BuildRequires:	gtk+2-devel >= 2:2.18
-BuildRequires:	intltool
+BuildRequires:	intltool >= 0.21
+%{?with_appindicator:BuildRequires:	libappindicator-devel >= 0.3}
 BuildRequires:	libmpd-devel >= %{libmpd_ver}
-BuildRequires:	libsexy-devel
-BuildRequires:	libsoup-devel
-BuildRequires:	libtool
+BuildRequires:	libsoup-devel >= 2.4
+BuildRequires:	libtool >= 2:2
 BuildRequires:	libunique-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2.0
 BuildRequires:	libxspf-devel
 BuildRequires:	pkgconfig >= 1:0.9
 BuildRequires:	rpmbuild(macros) >= 1.311
@@ -75,25 +79,26 @@ Pliki nagłówkowe do tworzenia wtyczek dla GMPC.
 %prep
 %setup -q
 %patch -P0 -p1
-# breaks compilation: http://carme.pld-linux.org/~glen/gmpc.log
+# breaks compilation due to some timestamp dependencies
 touch -r src/playlist3.c src/playlist3.c.foo
 %patch -P1 -p1
 touch -r src/playlist3.c.foo src/playlist3.c
+# too old vala dialect is used - patch generated files instead
+%patch -P2 -p1
 
 %build
 %{__intltoolize}
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
 
 RC=no \
 %configure \
+	%{__enable_disable appindicator} \
 	--enable-libxspf \
-	--enable-unique \
-
-#	--enable-appindicator \
+	--enable-unique
 
 %{__make}
 

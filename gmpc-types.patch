@@ -1,0 +1,266 @@
+--- gmpc-11.8.16/src/Widgets/gmpc-metadata-similarsongs.c.orig	2011-08-17 05:10:15.000000000 +0200
++++ gmpc-11.8.16/src/Widgets/gmpc-metadata-similarsongs.c	2025-08-31 21:31:53.399083113 +0200
+@@ -341,17 +341,17 @@ static void gmpc_meta_data_widgets_simil
+ 
+ 
+ static void _gmpc_meta_data_widgets_similar_songs_play_clicked_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_meta_data_widgets_similar_songs_play_clicked (self, _sender);
++	gmpc_meta_data_widgets_similar_songs_play_clicked (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+ static void _gmpc_meta_data_widgets_similar_songs_add_clicked_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_meta_data_widgets_similar_songs_add_clicked (self, _sender);
++	gmpc_meta_data_widgets_similar_songs_add_clicked (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+ static void _gmpc_meta_data_widgets_similar_songs_replace_clicked_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_meta_data_widgets_similar_songs_replace_clicked (self, _sender);
++	gmpc_meta_data_widgets_similar_songs_replace_clicked (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+@@ -413,7 +413,7 @@ static gboolean _gmpc_meta_data_widgets_
+ 
+ 
+ static void _gmpc_meta_data_widgets_similar_songs_tree_row_activated_gtk_tree_view_row_activated (GtkTreeView* _sender, GtkTreePath* path, GtkTreeViewColumn* column, gpointer self) {
+-	gmpc_meta_data_widgets_similar_songs_tree_row_activated (self, _sender, path, column);
++	gmpc_meta_data_widgets_similar_songs_tree_row_activated (self, GTK_WIDGET (_sender), path, column);
+ }
+ 
+ 
+@@ -513,7 +513,7 @@ static gboolean gmpc_meta_data_widgets_s
+ 		_tmp11_ = self->priv->item;
+ 		self->priv->item = NULL;
+ 		gmpc_mpddata_model_set_mpd_data (model, _tmp11_);
+-		_tmp12_ = gmpc_mpddata_treeview_new ("similar-song", TRUE, (GtkTreeModel*) model);
++		_tmp12_ = (GmpcMpdDataTreeview*) gmpc_mpddata_treeview_new ("similar-song", TRUE, (GtkTreeModel*) model);
+ 		tree = g_object_ref_sink (_tmp12_);
+ 		gmpc_mpddata_treeview_enable_click_fix (tree);
+ 		g_signal_connect_object ((GtkWidget*) tree, "button-release-event", (GCallback) _gmpc_meta_data_widgets_similar_songs_tree_right_menu_gtk_widget_button_release_event, self, 0);
+--- gmpc-11.8.16/src/GUI/title_header.c.orig	2011-08-17 05:09:55.000000000 +0200
++++ gmpc-11.8.16/src/GUI/title_header.c	2025-08-31 21:33:38.616395273 +0200
+@@ -78,12 +78,12 @@ void playlist3_new_header(void)
+         GtkWidget *hbox = gtk_hbox_new(FALSE, 6);
+         GtkWidget *vbox = gtk_vbox_new(FALSE, 0);
+         // expand in width, align in middle
+-        GtkAlignment *title_header_top_alignment = gtk_alignment_new(0,0.5,1.0,0);
++        GtkAlignment *title_header_top_alignment = GTK_ALIGNMENT(gtk_alignment_new(0,0.5,1.0,0));
+         // set a 3 px top/bottom border (looks better then 6)
+         gtk_alignment_set_padding(title_header_top_alignment, 3,3,0,0);
+         
+         // set minimum width 300 pixels.
+-        gtk_widget_set_size_request(title_header_top_alignment, 300, -1);
++        gtk_widget_set_size_request(GTK_WIDGET(title_header_top_alignment), 300, -1);
+         /** Title */
+         header_labels[0] = (GtkWidget *)gmpc_clicklabel_new("");
+         gmpc_clicklabel_font_size(GMPC_CLICKLABEL(header_labels[0]), 12);
+@@ -116,7 +116,7 @@ void playlist3_new_header(void)
+         g_signal_connect(G_OBJECT(header_labels[4]), "clicked", G_CALLBACK(playlist3_header_album), NULL);
+ 
+         gtk_container_add(GTK_CONTAINER(title_header_top_alignment), vbox);
+-        gtk_box_pack_start(GTK_BOX(hbox10), title_header_top_alignment, TRUE, TRUE, 0);
++        gtk_box_pack_start(GTK_BOX(hbox10), GTK_WIDGET(title_header_top_alignment), TRUE, TRUE, 0);
+         gtk_widget_show_all(hbox10);
+ 
+         g_signal_connect(G_OBJECT(hbox10), "style-set", G_CALLBACK(playlist3_header_update_style), NULL);
+--- gmpc-11.8.16/src/browsers/gmpc-metadata-browser2.c.orig	2011-08-17 05:10:15.000000000 +0200
++++ gmpc-11.8.16/src/browsers/gmpc-metadata-browser2.c	2025-08-31 21:37:42.904560688 +0200
+@@ -629,12 +629,12 @@ static void gmpc_browsers_metadata_selec
+      * Gmpc.Plugin.BrowserIface.add_go_menu
+      */
+ static void _gmpc_browsers_metadata_select_metadata_browser_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_browsers_metadata_select_metadata_browser (self, _sender);
++	gmpc_browsers_metadata_select_metadata_browser (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+ static void _gmpc_browsers_metadata_select_metadata_browser_search_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_browsers_metadata_select_metadata_browser_search (self, _sender);
++	gmpc_browsers_metadata_select_metadata_browser_search (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+@@ -1213,12 +1213,12 @@ static void gmpc_browsers_metadata_album
+ 
+ 
+ static void _gmpc_browsers_metadata_album_add_clicked_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_browsers_metadata_album_add_clicked (self, _sender);
++	gmpc_browsers_metadata_album_add_clicked (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+ static void _gmpc_browsers_metadata_album_replace_clicked_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_browsers_metadata_album_replace_clicked (self, _sender);
++	gmpc_browsers_metadata_album_replace_clicked (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+@@ -1411,12 +1411,12 @@ static void gmpc_browsers_metadata_song_
+ 
+ 
+ static void _gmpc_browsers_metadata_song_add_clicked_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_browsers_metadata_song_add_clicked (self, _sender);
++	gmpc_browsers_metadata_song_add_clicked (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+ static void _gmpc_browsers_metadata_song_replace_clicked_gtk_menu_item_activate (GtkMenuItem* _sender, gpointer self) {
+-	gmpc_browsers_metadata_song_replace_clicked (self, _sender);
++	gmpc_browsers_metadata_song_replace_clicked (self, GTK_WIDGET (_sender));
+ }
+ 
+ 
+@@ -1678,7 +1678,7 @@ static void gmpc_browsers_metadata_brows
+ 		_tmp0_ = (GtkHPaned*) gtk_hpaned_new ();
+ 		_g_object_unref0 (self->priv->paned);
+ 		self->priv->paned = (GtkPaned*) g_object_ref_sink (_tmp0_);
+-		gmpc_paned_size_group_add_paned (paned_size_group, self->priv->paned);
++		gmpc_paned_size_group_add_paned ((GmpcPanedSizeGroup *)paned_size_group, self->priv->paned);
+ 		g_signal_connect_object ((GtkWidget*) self->priv->paned, "style-set", (GCallback) _gmpc_browsers_metadata_browser_bg_style_changed_gtk_widget_style_set, self, 0);
+ 		_tmp1_ = (GtkVBox*) gtk_vbox_new (TRUE, 6);
+ 		_g_object_unref0 (self->priv->browser_box);
+@@ -4089,14 +4089,14 @@ static void gmpc_browsers_metadata_metad
+ 	gtk_label_set_line_wrap (label, TRUE);
+ 	_tmp19_ = _ ("Album");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp19_, NULL, (GtkWidget*) label, &i, "media-album");
+-	_tmp20_ = gmpc_stats_label_new (ALBUM_GENRES_SONGS, song);
++	_tmp20_ = (GmpcStatsLabel *)gmpc_stats_label_new (ALBUM_GENRES_SONGS, song);
+ 	pt_label = g_object_ref_sink (_tmp20_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+ 	gtk_misc_set_alignment ((GtkMisc*) pt_label, 0.0f, 0.5f);
+ 	gtk_label_set_line_wrap ((GtkLabel*) pt_label, TRUE);
+ 	_tmp21_ = _ ("Genres");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp21_, NULL, (GtkWidget*) pt_label, &i, "media-genre");
+-	_tmp22_ = gmpc_stats_label_new (ALBUM_DATES_SONGS, song);
++	_tmp22_ = (GmpcStatsLabel *)gmpc_stats_label_new (ALBUM_DATES_SONGS, song);
+ 	_g_object_unref0 (pt_label);
+ 	pt_label = g_object_ref_sink (_tmp22_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+@@ -4104,7 +4104,7 @@ static void gmpc_browsers_metadata_metad
+ 	gtk_misc_set_alignment ((GtkMisc*) pt_label, 0.0f, 0.5f);
+ 	_tmp23_ = _ ("Dates");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp23_, NULL, (GtkWidget*) pt_label, &i, "media-date");
+-	_tmp24_ = gmpc_stats_label_new (ALBUM_NUM_SONGS, song);
++	_tmp24_ = (GmpcStatsLabel *)gmpc_stats_label_new (ALBUM_NUM_SONGS, song);
+ 	_g_object_unref0 (pt_label);
+ 	pt_label = g_object_ref_sink (_tmp24_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+@@ -4112,7 +4112,7 @@ static void gmpc_browsers_metadata_metad
+ 	gtk_misc_set_alignment ((GtkMisc*) pt_label, 0.0f, 0.5f);
+ 	_tmp25_ = _ ("Songs");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp25_, NULL, (GtkWidget*) pt_label, &i, "media-num-tracks");
+-	_tmp26_ = gmpc_stats_label_new (ALBUM_PLAYTIME_SONGS, song);
++	_tmp26_ = (GmpcStatsLabel *)gmpc_stats_label_new (ALBUM_PLAYTIME_SONGS, song);
+ 	_g_object_unref0 (pt_label);
+ 	pt_label = g_object_ref_sink (_tmp26_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+@@ -4982,14 +4982,14 @@ static void gmpc_browsers_metadata_metad
+ 	gtk_misc_set_alignment ((GtkMisc*) label, 0.0f, 0.5f);
+ 	_tmp14_ = _ ("Artist");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp14_, NULL, (GtkWidget*) label, &i, "media-artist");
+-	_tmp15_ = gmpc_stats_label_new (ARTIST_GENRES_SONGS, song);
++	_tmp15_ = (GmpcStatsLabel *)gmpc_stats_label_new (ARTIST_GENRES_SONGS, song);
+ 	pt_label = g_object_ref_sink (_tmp15_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+ 	gtk_misc_set_alignment ((GtkMisc*) pt_label, 0.0f, 0.5f);
+ 	gtk_label_set_line_wrap ((GtkLabel*) pt_label, TRUE);
+ 	_tmp16_ = _ ("Genres");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp16_, NULL, (GtkWidget*) pt_label, &i, "media-genre");
+-	_tmp17_ = gmpc_stats_label_new (ARTIST_DATES_SONGS, song);
++	_tmp17_ = (GmpcStatsLabel *)gmpc_stats_label_new (ARTIST_DATES_SONGS, song);
+ 	_g_object_unref0 (pt_label);
+ 	pt_label = g_object_ref_sink (_tmp17_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+@@ -4997,7 +4997,7 @@ static void gmpc_browsers_metadata_metad
+ 	gtk_misc_set_alignment ((GtkMisc*) pt_label, 0.0f, 0.5f);
+ 	_tmp18_ = _ ("Dates");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp18_, NULL, (GtkWidget*) pt_label, &i, "media-date");
+-	_tmp19_ = gmpc_stats_label_new (ARTIST_NUM_SONGS, song);
++	_tmp19_ = (GmpcStatsLabel *)gmpc_stats_label_new (ARTIST_NUM_SONGS, song);
+ 	_g_object_unref0 (pt_label);
+ 	pt_label = g_object_ref_sink (_tmp19_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+@@ -5005,7 +5005,7 @@ static void gmpc_browsers_metadata_metad
+ 	gtk_misc_set_alignment ((GtkMisc*) pt_label, 0.0f, 0.5f);
+ 	_tmp20_ = _ ("Songs");
+ 	gmpc_browsers_metadata_add_entry (self, info_box, _tmp20_, NULL, (GtkWidget*) pt_label, &i, "media-num-tracks");
+-	_tmp21_ = gmpc_stats_label_new (ARTIST_PLAYTIME_SONGS, song);
++	_tmp21_ = (GmpcStatsLabel *)gmpc_stats_label_new (ARTIST_PLAYTIME_SONGS, song);
+ 	_g_object_unref0 (pt_label);
+ 	pt_label = g_object_ref_sink (_tmp21_);
+ 	gtk_label_set_selectable ((GtkLabel*) pt_label, TRUE);
+--- gmpc-11.8.16/src/Tools/gmpc-database-update-tracker.c.orig	2011-08-17 05:10:15.000000000 +0200
++++ gmpc-11.8.16/src/Tools/gmpc-database-update-tracker.c	2025-08-31 21:44:17.980317879 +0200
+@@ -35,6 +35,8 @@
+ #include <plugin.h>
+ #include <gmpc-profiles.h>
+ #include <main.h>
++#include <status_icon.h>
++
+ 
+ #define _g_object_unref0(var) ((var == NULL) ? NULL : (var = (g_object_unref (var), NULL)))
+ #define _g_free0(var) (var = (g_free (var), NULL))
+@@ -110,7 +112,7 @@ static void gmpc_tools_database_update_t
+ 	if (self->priv->image == NULL) {
+ 		return;
+ 	}
+-	_tmp0_ = gtk_widget_get_parent ((GtkWidget*) self->priv->image);
++	_tmp0_ = GTK_CONTAINER (gtk_widget_get_parent ((GtkWidget*) self->priv->image));
+ 	gtk_container_remove (_tmp0_, (GtkWidget*) self->priv->image);
+ 	_g_object_unref0 (self->priv->image);
+ 	self->priv->image = NULL;
+--- gmpc-11.8.16/src/Providers/RenderCover.c.orig	2011-08-17 05:10:15.000000000 +0200
++++ gmpc-11.8.16/src/Providers/RenderCover.c	2025-08-31 21:50:16.145848624 +0200
+@@ -55,8 +55,8 @@ typedef struct _Block36Data Block36Data;
+ struct _Block36Data {
+ 	int _ref_count_;
+ 	GmpcProviderRenderCover * self;
+-	void* data;
+-	guint len;
++	guchar* data;
++	gsize len;
+ };
+ 
+ 
+@@ -78,7 +78,7 @@ static void gmpc_provider_render_cover_g
+ static Block36Data* block36_data_ref (Block36Data* _data36_);
+ static void block36_data_unref (Block36Data* _data36_);
+ static cairo_status_t _lambda93_ (Block36Data* _data36_, guchar* imgdata, int imgdata_length1);
+-static cairo_status_t __lambda93__cairo_write_func (gpointer self, guchar* data, int data_length1);
++static cairo_status_t __lambda93__cairo_write_func (gpointer self, const guchar* data, unsigned data_length1);
+ static void _meta_data_free0_ (gpointer var);
+ static void _g_list_free__meta_data_free0_ (GList* self);
+ static GObject * gmpc_provider_render_cover_constructor (GType type, guint n_construct_properties, GObjectConstructParam * construct_properties);
+@@ -207,7 +207,7 @@ static cairo_status_t _lambda93_ (Block3
+ }
+ 
+ 
+-static cairo_status_t __lambda93__cairo_write_func (gpointer self, guchar* data, int data_length1) {
++static cairo_status_t __lambda93__cairo_write_func (gpointer self, const guchar* data, unsigned data_length1) {
+ 	cairo_status_t result;
+ 	result = _lambda93_ (self, data, data_length1);
+ 	return result;
+--- gmpc-11.8.16/src/vala/gmpc-favorites.c.orig	2011-08-17 05:10:15.000000000 +0200
++++ gmpc-11.8.16/src/vala/gmpc-favorites.c	2025-08-31 22:20:29.340304768 +0200
+@@ -695,7 +695,7 @@ static GObject * gmpc_favorites_button_c
+ 		_tmp4_ = gmpc_favorites_list_new ();
+ 		_g_object_unref0 (favorites);
+ 		favorites = _tmp4_;
+-		g_object_add_weak_pointer ((GObject*) favorites, &favorites);
++		g_object_add_weak_pointer ((GObject*) favorites, (void**)&favorites);
+ 	} else {
+ 		g_object_ref ((GObject*) favorites);
+ 	}
+--- gmpc-11.8.16/src/vala/gmpc-test-plugin.c.orig	2011-08-17 05:10:15.000000000 +0200
++++ gmpc-11.8.16/src/vala/gmpc-test-plugin.c	2025-08-31 22:21:22.710632107 +0200
+@@ -640,7 +640,7 @@ void gmpc_meta_data_edit_window_callback
+ 						}
+ 					} else {
+ 						if (md->content_type == META_DATA_CONTENT_RAW) {
+-							gint _tmp13_;
++							gsize _tmp13_;
+ 							guchar* _tmp14_ = NULL;
+ 							guchar* _tmp15_;
+ 							guchar* _tmp16_;
