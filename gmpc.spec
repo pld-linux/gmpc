@@ -15,7 +15,7 @@ Source0:	https://download.sarine.nl/Programs/gmpc/%{version}/%{name}-%{version}.
 Patch0:		%{name}-desktop.patch
 Patch1:		window-title.patch
 Patch2:		%{name}-types.patch
-URL:		https://www.gmpclient.org/
+URL:		https://gmpc.fandom.com/wiki/Gnome_Music_Player_Client
 BuildRequires:	autoconf >= 2.59
 BuildRequires:	automake
 BuildRequires:	gettext-tools
