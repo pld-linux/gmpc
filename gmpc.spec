@@ -135,7 +135,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/gmpc-remote-stream
 %{_desktopdir}/gmpc.desktop
 %{_datadir}/%{name}
-%{_libdir}/%{name}
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/plugins
 %{_iconsdir}/hicolor/16x16/apps/gmpc.png
 %{_iconsdir}/hicolor/22x22/apps/gmpc.png
 %{_iconsdir}/hicolor/32x32/apps/gmpc.png
